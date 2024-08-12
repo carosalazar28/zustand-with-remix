@@ -13,8 +13,7 @@ const useTheme = create<ThemeState>()(
       toggle: (dark) => set(() => ({ isDark: dark })),
     }),
     { 
-      name: 'theme-storage',
-      skipHydration: true,
+      name: 'theme',
     }
   ),
 )

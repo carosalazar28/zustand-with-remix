@@ -1,4 +1,12 @@
 import { Form } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { charset: "utf-8" },
+    { title: "Register" },
+  ];
+};
 
 export default function Register() {
   return (
