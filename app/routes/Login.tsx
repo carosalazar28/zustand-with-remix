@@ -8,16 +8,16 @@ import Button from "~/components/ui/Button";
 export const meta: MetaFunction = () => {
   return [
     { charset: "utf-8" },
-    { title: "Register Dragon Ball" },
+    { title: "Login Dragon Ball" },
   ];
 };
 
-export default function Register() {
+export default function Login() {
   const handleLogin = useAuth((state) => state.login)
   return (
     <div className="flex justify-center items-center flex-grow">
       <div className="w-80">
-        <h1 className="text-3xl my-4">Register</h1>
+        <h1 className="text-3xl my-4">Login</h1>
         <Form
           className="flex flex-col gap-y-2"
           onSubmit={(e) => {
@@ -30,14 +30,14 @@ export default function Register() {
           <Input type="email" id="email" name="email" placeholder="Type your email" />
           <label htmlFor="password">Password</label>
           <Input type="password" id="password" name="password" placeholder="Type your password" />
-          <Button type="submit" text="Register"/>
+          <Button type="submit" text="Login"/>
         </Form>
         <span className="my-2 block">
           <p className="contents">
-            Already have an account?
+            Dont have and account?
           </p>
           {' '}
-          <a href="/login" className="text-blue">Login</a>
+          <a href="/register" className="text-blue">Register</a>
         </span>
       </div>
     </div>
