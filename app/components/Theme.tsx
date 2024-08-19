@@ -1,17 +1,7 @@
-import { useEffect, useState } from "react"
 import useTheme from "~/context/theme"
 
 export default function Theme({ children }: { children: React.ReactNode }) {
-  const [isMounted, setIsMounted] = useState(false)
   const isDark = useTheme((state) => state.isDark)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted) {
-    return null
-  }
 
   return (
     <div

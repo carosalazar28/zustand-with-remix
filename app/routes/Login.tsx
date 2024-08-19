@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 
-import { Form } from "@remix-run/react";
+import { Form, useNavigate } from "@remix-run/react";
 import useAuth from "~/context/auth";
 import Input from "~/components/ui/Input";
 import Button from "~/components/ui/Button";
@@ -13,6 +13,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const handleLogin = useAuth((state) => state.login)
   return (
     <div className="flex justify-center items-center flex-grow">
@@ -22,8 +24,8 @@ export default function Login() {
           className="flex flex-col gap-y-2"
           onSubmit={(e) => {
             e.preventDefault();
-            console.log("Form submitted");
             handleLogin('logued');
+            navigate('/')
           }}
         >
           <label htmlFor="email">Email</label>

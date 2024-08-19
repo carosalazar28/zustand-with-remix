@@ -15,14 +15,15 @@ export default {
       'pink': '#ff49db',
       'orange': '#ff7849',
       'green': '#13ce66',
-      'yellow': '#ffc82c',
+      'yellow': {
+        default: '#ffc82c',
+        50: 'rgb(254 252 232)',
+        200: 'rgb(254 240 138)'
+      },
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      'white': '#ffffff',
     },
     extend: {
       spacing: {
