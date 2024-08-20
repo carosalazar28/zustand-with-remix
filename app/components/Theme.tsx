@@ -5,7 +5,7 @@ export default function Theme({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`flex flex-col h-screen ${isDark ? "bg-gray-dark text-gray-light" : null }`}
+      className={`flex flex-col min-h-screen ${isDark ? "bg-gray-dark text-gray-light" : null }`}
     >
       {children}
     </div>
