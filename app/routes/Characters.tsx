@@ -15,6 +15,7 @@ export const meta: MetaFunction = () => {
 
 export default function Characters() {
   const fecthCharacter = useCharacters((state) => state.fetch)
+  const fetchMoreCharacter = useCharacters((state) => state.fetchMore)
   const characters = useCharacters((state) => state.characters)
 
   useEffect(() => {
@@ -26,13 +27,14 @@ export default function Characters() {
       <h1 className="text-3xl mb-10">Characters</h1>
       <div 
         id="characters-container"
-        className="text-gray-dark font-mono grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"
+        className="text-gray-dark font-mono"
       >
         <InfiniteScroll
           dataLength={characters.length}
-          next={fecthCharacter}
+          next={fetchMoreCharacter}
           hasMore
           loader={<div className="loader">Cargando...</div>}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           {characters.length > 0 && characters.map((character) => (
             <CharacterCard

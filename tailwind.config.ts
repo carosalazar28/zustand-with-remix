@@ -20,9 +20,12 @@ export default {
         50: 'rgb(254 252 232)',
         200: 'rgb(254 240 138)'
       },
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      'gray': {
+        default: '#8492a6',
+        dark: '#273444',
+        light: '#d3dce6',
+        opacity: '#8492a63b'
+      },
       'white': '#ffffff',
     },
     extend: {

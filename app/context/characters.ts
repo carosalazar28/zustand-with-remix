@@ -16,17 +16,27 @@ interface Character {
 
 interface CharacterState {
   characters: Character[];
-  fetch: (url?: string) => void;
+  next: string | null;
+  fetch: () => void;
+  fetchMore: () => void;
 }
 
-const useCharacters = create<CharacterState>((set) => ({
+const URL = `${API_BASE_PATH}${API_PATH}/characters`;
+
+const useCharacters = create<CharacterState>((set, get) => ({
     characters: [],
-    fetch: async (url) => {
-      const initialURL = `${API_BASE_PATH}${API_PATH}/characters`;
-      const response = await fetch(url || initialURL);
+    next: null,
+    fetch: async () => {
+      const response = await fetch(URL);
       const data = await response.json();
-      set({ characters: data.items });
+      set({ characters: data.items, next: data.links.next });
     },
+    fetchMore: async () => {
+      const nextCall = get().next ?? URL;
+      const response = await fetch(nextCall);
+      const data = await response.json();
+      set((state) => ({ characters: [...state.characters, ...data.items] }));
+    }
   }),
 )
 
