@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import CharacterCard from "~/components/CharacterCard";
+import Skeleton from "~/components/Skeleton";
 import useCharacters from "~/context/characters";
 
 export const meta: MetaFunction = () => {
@@ -33,7 +34,9 @@ export default function Characters() {
           dataLength={characters.length}
           next={fetchMoreCharacter}
           hasMore
-          loader={<div className="loader">Cargando...</div>}
+          loader={
+            Array.from({ length: 6 }).map((_, index) => (<Skeleton key={index} />))
+          }
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           {characters.length > 0 && characters.map((character) => (
