@@ -1,6 +1,7 @@
 import useAuth from "~/context/auth";
 import { SwitchTheme } from "./SwitchTheme";
 import { SwitchNav } from "./SwitchNav";
+import { NavItem } from "./ui/NavItem";
 
 const routes = [
   {
@@ -47,9 +48,9 @@ export default function Navbar() {
               ) 
               : (
                 <>
-                  <a className="px-4" href="/">Home</a>
-                  <a className="px-4" href="/characters">Characters</a>
-                  <a className="px-4" href="/contact">Contact</a>
+                  <NavItem device="desktop" href="/" label="Home"/>
+                  <NavItem device="desktop" href="/characters" label="Characters" />
+                  <NavItem device="desktop" href="/contact" label="Contact" />
                 </>
               )
             }
@@ -59,7 +60,7 @@ export default function Navbar() {
       <div className="flex">
         {hasToken ? (
           <button className="px-4" onClick={handleLogout}>Logout</button>
-        ) : (<a href="/register">Register</a>)}
+        ) : (<NavItem device="desktop" href="/register" label="Register"/>)}
         <p className="px-4">|</p>
         <SwitchTheme />
       </div>
