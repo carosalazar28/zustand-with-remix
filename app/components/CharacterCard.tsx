@@ -19,6 +19,7 @@ export default function CharacterCard(props: Props) {
         <img 
           src={image}
           alt="character"
+          height={256}
           className="max-w-80 max-h-64 transition duration-300 transform group-hover:scale-125"
           // style={{ maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), rgba(1, 1, 1, 1))'}}
         />

@@ -41,7 +41,7 @@ export default function Characters() {
         >
           {characters.length > 0 && characters.map((character) => (
             <CharacterCard
-              key={character.id}
+              key={`${character.name}-${character.id}`}
               {...character}
             />
           ))}

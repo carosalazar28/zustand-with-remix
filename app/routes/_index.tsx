@@ -25,14 +25,15 @@ export default function Index() {
 
   useEffect(() => {
     fecthCharacter()
-    console.log(characters)
   }, [])
   return (
     <div className="font-sans p-4">
       <h1 className="text-3xl">Dragon Ball</h1>
       <Swiper
       spaceBetween={50}
-      slidesPerView={3}
+      slidesPerView={1}
+      direction="vertical"
+      scrollbar={{ draggable: true }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
