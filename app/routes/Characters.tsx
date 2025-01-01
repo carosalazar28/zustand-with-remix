@@ -25,7 +25,6 @@ export default function Characters() {
 
   return (
     <div className="px-3 w-4/5 mx-auto">
-      <h1 className="text-3xl mb-10">Characters</h1>
       <div 
         id="characters-container"
         className="text-gray-dark font-mono"
@@ -37,7 +36,7 @@ export default function Characters() {
           loader={
             Array.from({ length: 6 }).map((_, index) => (<Skeleton key={index} />))
           }
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
           {characters.length > 0 && characters.map((character) => (
             <CharacterCard

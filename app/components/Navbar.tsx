@@ -1,4 +1,5 @@
 import useAuth from "~/context/auth";
+import { isMobile } from "~/utils/device";
 import { SwitchTheme } from "./SwitchTheme";
 import { SwitchNav } from "./SwitchNav";
 import { NavItem } from "./ui/NavItem";
@@ -21,17 +22,8 @@ const routes = [
   }
 ]
 
-function getMediaQuery(query) {
-  let mediaQueryList
-  if (typeof window !== "undefined") {
-    mediaQueryList = window.matchMedia(query);
-    return mediaQueryList.matches;
-  }
-  return true
-}
-
 export default function Navbar() {
-  const isMobile = getMediaQuery('(max-width: 768px)');
+  const mobile = isMobile()
   const hasToken = useAuth((state) => state.token)
 
   const handleLogout = useAuth((state) => state.logout)
@@ -42,7 +34,7 @@ export default function Navbar() {
         {hasToken ? (
           <>
             {
-              isMobile 
+              mobile 
               ? (
                 <SwitchNav items={routes} />
               ) 
@@ -50,7 +42,7 @@ export default function Navbar() {
                 <>
                   <NavItem device="desktop" href="/" label="Home"/>
                   <NavItem device="desktop" href="/characters" label="Characters" />
-                  <NavItem device="desktop" href="/contact" label="Contact" />
+                  <NavItem device="desktop" href="/planets" label="Planets" />
                 </>
               )
             }

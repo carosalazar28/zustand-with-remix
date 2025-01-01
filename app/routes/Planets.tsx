@@ -7,25 +7,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperOptions } from "swiper/types";
 import { Pagination } from "swiper/modules";
 
-import useCharacters from "~/context/characters";
+import usePlanets from "~/context/planets";
 import { isMobile } from "~/utils/device";
 import { Slide } from "~/components/Slide";
 
 // Import Swiper styles
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
-    
+
 export const meta: MetaFunction = () => {
   return [
-    { title: "Dragon Ball" },
-    { name: "description", content: "Welcome" },
+    { charset: "utf-8" },
+    { title: "Planet" },
   ];
 };
 
-export default function Index() {
-  const fecthCharacter = useCharacters((state) => state.fetch)
+export default function Planets() {
+  const fecthCharacter = usePlanets((state) => state.fetch)
 
-  const characters = useCharacters((state) => state.characters)
+  const planets = usePlanets((state) => state.planets)
 
   const mobile = isMobile();
 
@@ -48,7 +48,7 @@ export default function Index() {
     <div className="font-sans p-4">
         <Swiper {...swiperConfig} >
           {/* <NavigationSlide /> */}
-          {characters?.map((character) => (
+          {planets?.map((character) => (
             <SwiperSlide key={character.id}>
               <Slide {...character}/>
             </SwiperSlide>
